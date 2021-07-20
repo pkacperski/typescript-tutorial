@@ -23,22 +23,6 @@ export class PrItemServiceFromFile implements IPrItemService {
         // this.saveElemFromFile();
     }
 
-    // getItems: () => Array<PrItem> = () => { // podejscie 1 - wczytywanie danych z pliku przy kazdym getItems()
-    //     this.readDataFromFile();
-    //     return this.items;
-    // }
-
-    // static async readDataFromFile(): /* Promise<IPrItemService> */ Array<PrItem> {
-    //     // TODO
-    //     // ./../data/pr-items.json
-
-    //     const data = (await import(`./../data/pr-items.json`)).default;
-    //     const prs: Array<PrItem> = Object.values(data);
-
-    //     // return new PrItemServiceFromFile();
-    //     return prs;
-    // }
-
     // TODO: how to read files in javascript? implement file access. steal implementation from PR hub -> look in PR Hub (JSONPrService in Pr Hub)
     // TODO(1,5): implement CRUD operations
     // TODO(2): buttons for add and delete functionality, also for update, add UI for this
