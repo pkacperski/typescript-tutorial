@@ -7,7 +7,9 @@ export type PrItem = {
 
 export interface IPrItemService {
     getItems: () => Array<PrItem>; // Read (R)
-    getItemByKey: (id: string) => PrItem;
+    getItemByKey: (key: string) => PrItem;
     addItem: (elem: PrItem) => void; // Add (C)
+    removeItem: (key: string) => void; // Delete (D)
+    // TODO: removeItemById()? cos z obsluga przycisku typu wcisniecie przycisku powoduje usuniecie itemu i rerender listy?
 }
 

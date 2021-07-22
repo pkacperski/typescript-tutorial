@@ -1,5 +1,3 @@
-// TODO -> put in JSON file and read from JSON file
-
 import { IPrItemService, PrItem } from "./pr-item-interface";
 
 export class PrItemServiceFromFile implements IPrItemService {
@@ -39,49 +37,16 @@ export class PrItemServiceFromFile implements IPrItemService {
       // TODO save to file
     }
 
-    // DONE: how to read files in javascript? implement file access. steal implementation from PR hub -> look in PR Hub (JSONPrService in Pr Hub)
-    // TODO(1,5): implement CRUD operations -> getById()
-    // TODO(2): buttons for add and delete functionality, also for update, add UI for this
-    // problem with Fluent UI -> ping Shift or Dmitrii
-}
+    removeItem: (key: string) => void = (key: string) => {
+      let idx = -1;
+      for(let i = 0; i < this.items.length; i++) {
+        if(this.items[i].key === key)
+          idx = i;
+      }
+      this.items.splice(idx, 1);
+      // TODO save to file
+    }
 
-// export class JsonPrService implements IPrService {
-//     private constructor(
-//       private logger: ILogger,
-//       private prList: PullRequestEntity[]
-//     ) {}
-  
-//     static async init(logger: ILogger): Promise<IPrService> {
-//       const data = (await import(`data/prs.json`)).default;
-//       const prs: PullRequestEntity[] = Object.values(data);
-  
-//       return new JsonPrService(logger, prs);
-//     }
-  
-//     async get(id: number): Promise<PullRequestEntity | null> {
-//       throw new Error('Method not implemented.');
-//     }
-  
-//     async getAll(): Promise<PullRequestEntity[]> {
-//       return this.prList;
-//     }
-  
-//     async filter(
-//       predicate: (
-//         value: PullRequestEntity,
-//         index: number,
-//         array: PullRequestEntity[]
-//       ) => unknown,
-//       thisArg?: any
-//     ): Promise<PullRequestEntity[]> {
-//       return this.prList.filter(predicate, thisArg);
-//     }
-  
-//     async create(entity: PullRequestEntity): Promise<PullRequestEntity | null> {
-//       throw new Error('Method not implemented.');
-//     }
-  
-//     async update(entity: PullRequestEntity): Promise<PullRequestEntity | null> {
-//       throw new Error('Method not implemented.');
-//     }
-//   }
+    // TODO(1,5): implement CRUD operations -> getItemByKey(DONE), ?remove?
+    // TODO(2): buttons for add and delete functionality, also for update, add UI for this -> 
+}

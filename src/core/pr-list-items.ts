@@ -2,7 +2,7 @@ import { PrItem, IPrItemService } from './pr-item-interface';
 
 export class PrItemService implements IPrItemService {
     getItems: () => Array<PrItem> = () => {
-        return this.items;
+      return this.items;
     }
 
     getItemByKey: (key: string) => PrItem = (key: string) => {
@@ -22,7 +22,16 @@ export class PrItemService implements IPrItemService {
     }
     
     addItem: (elem: PrItem) => void = (elem: PrItem) => {
-        this.items.push(elem);
+      this.items.push(elem);
+    }
+
+    removeItem: (key: string) => void = (key: string) => {
+      let idx = -1;
+      for(let i = 0; i < this.items.length; i++) {
+        if(this.items[i].key === key)
+          idx = i;
+      }
+      this.items.splice(idx, 1);
     }
 
     private items: Array<PrItem> = [

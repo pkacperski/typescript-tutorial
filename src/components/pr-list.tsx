@@ -21,9 +21,13 @@ const PrList = () => {
       list.push(item);
       setFoundItemList(list);
     }
+    const removeItemByKey = async (key: string) => {
+      (await service).removeItem(key); // DZIALA, ale czy ??czy nie powinienem najpierw pobrac wszystkich itemow??
+    }
 
-    // fetchItems();
-    fetchItemByKey("robert");
+    removeItemByKey("robert");
+    fetchItems();
+    // fetchItemByKey("robert");
   }, [service, setItems, setFoundItemList]);
 
   return (
@@ -32,7 +36,7 @@ const PrList = () => {
         selectable
         selectedIndex={selectedIndex}
         onSelectedIndexChange={(e, newProps) => {}}
-        items={foundItemList} // items={items} 
+        items={items} // items={foundItemList} 
       />
     </>
   );
