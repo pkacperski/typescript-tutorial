@@ -10,16 +10,11 @@ const PrList = () => {
   const [foundItemList, setFoundItemList] = useState<Array<PrItem>>([]);
   const service = createService();
 
-  // useEffect(() => { // Browser hangs when running both hooks (which contain async functions)!
-  //   const fetchItems = async () => {
-  //     const items = (await service).getItems();
-  //     setItems(items);
-  //   }
-
-  //   fetchItems();
-  // }, [service, setItems]);
-  
-  useEffect(() => {
+  useEffect(() => { // Browser hangs when running both hooks (which contain async functions)!
+    const fetchItems = async () => {
+      const items = (await service).getItems();
+      setItems(items);
+    }
     const fetchItemByKey = async (key: string) => {
       const item = (await service).getItemByKey(key);
       let list = Array<PrItem>();
@@ -27,8 +22,9 @@ const PrList = () => {
       setFoundItemList(list);
     }
 
+    // fetchItems();
     fetchItemByKey("robert");
-  }, [service, setFoundItemList]);
+  }, [service, setItems, setFoundItemList]);
 
   return (
     <>
@@ -36,14 +32,8 @@ const PrList = () => {
         selectable
         selectedIndex={selectedIndex}
         onSelectedIndexChange={(e, newProps) => {}}
-        items={foundItemList}
+        items={foundItemList} // items={items} 
       />
-      {/* <List
-        selectable
-        selectedIndex={selectedIndex}
-        onSelectedIndexChange={(e, newProps) => {}}
-        items={items}
-      /> */}
     </>
   );
 }
