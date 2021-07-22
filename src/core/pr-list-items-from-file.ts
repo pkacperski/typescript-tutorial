@@ -4,7 +4,7 @@ import { IPrItemService, PrItem } from "./pr-item-interface";
 
 export class PrItemServiceFromFile implements IPrItemService {
     public constructor(
-        private items: Array<PrItem>
+      private items: Array<PrItem>
     ) {};
     
     static async init(): Promise<IPrItemService> {
@@ -16,15 +16,31 @@ export class PrItemServiceFromFile implements IPrItemService {
 
     getItems(): Array<PrItem> {
       return this.items;
-    }    
-
-    addItem: (elem: PrItem) => void = (elem: PrItem) => {
-        // TODO
-        // this.saveElemFromFile();
+    }
+    
+    getItemByKey: (key: string) => PrItem = (key: string) => {
+      for(let i = 0; i < this.items.length; i++) {
+        if(this.items[i].key === key)
+          return this.items[i];
+      }
+      return (
+        {
+          "key": "cecil",
+          "header": "Cecil Folk",
+          "headerMedia": "5:22:40 PM",
+          "content": "The GB pixel is down, navigate the virtual interface!"
+        }
+      ); // TODO: return value when given key not found
+      // return this.items.find(item => item.key === id); // problem with returning either PrItem or undefined if key not found
     }
 
-    // TODO: how to read files in javascript? implement file access. steal implementation from PR hub -> look in PR Hub (JSONPrService in Pr Hub)
-    // TODO(1,5): implement CRUD operations
+    addItem: (elem: PrItem) => void = (elem: PrItem) => {
+      this.items.push(elem);
+      // TODO save to file
+    }
+
+    // DONE: how to read files in javascript? implement file access. steal implementation from PR hub -> look in PR Hub (JSONPrService in Pr Hub)
+    // TODO(1,5): implement CRUD operations -> getById()
     // TODO(2): buttons for add and delete functionality, also for update, add UI for this
     // problem with Fluent UI -> ping Shift or Dmitrii
 }

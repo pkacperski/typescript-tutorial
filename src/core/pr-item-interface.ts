@@ -7,7 +7,7 @@ export type PrItem = {
 
 export interface IPrItemService {
     getItems: () => Array<PrItem>; // Read (R)
+    getItemByKey: (id: string) => PrItem;
     addItem: (elem: PrItem) => void; // Add (C)
-    // TODO: rest of CRUD operations
 }
 
