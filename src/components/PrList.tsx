@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { List } from '@fluentui/react-northstar';
-import { useEffect, useState } from 'react';
-import { createService } from './../core/builder';
+import { useCallback, useEffect, useState } from 'react';
+import { createService } from '../core/builder';
 import { PrItem } from '../core/pr-item-interface';
 
 const PrList = () => {
@@ -17,18 +17,34 @@ const PrList = () => {
     }
     const fetchItemByKey = async (key: string) => {
       const item = (await service).getItemByKey(key);
+      if (!item) {
+        return; // add additional logic to display it wasn't fpound
+      }
       let list = Array<PrItem>();
       list.push(item);
       setFoundItemList(list);
     }
     const removeItemByKey = async (key: string) => {
-      (await service).removeItem(key); // DZIALA, ale czy ??czy nie powinienem najpierw pobrac wszystkich itemow??
+      (await service).removeItem(key);
     }
 
-    removeItemByKey("robert");
-    fetchItems();
-    // fetchItemByKey("robert");
+    //removeItemByKey("robert");
+    // fetchItems();
+    fetchItemByKey("robert");
   }, [service, setItems, setFoundItemList]);
+
+  // const FunctionalButton = (buttonsFunction: string, key = "robert") => {
+  //   // const onClickHandle = (await service).removeItem;
+  //   let buttonCallback, buttonName;
+  //   if(buttonsFunction === "remove") {
+  //     buttonCallback = useCallback(async (key = "robert") => {
+  //         (await service).removeItem(key);
+  //     }, [service]);
+  //     buttonName = "Remove";
+  //   }
+
+  //   return <button onClick={buttonCallback}>{buttonName}</button>;
+  // }
 
   return (
     <>
@@ -36,7 +52,8 @@ const PrList = () => {
         selectable
         selectedIndex={selectedIndex}
         onSelectedIndexChange={(e, newProps) => {}}
-        items={items} // items={foundItemList} 
+        // items={items}
+        items={foundItemList} 
       />
     </>
   );

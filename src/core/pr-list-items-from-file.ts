@@ -16,20 +16,20 @@ export class PrItemServiceFromFile implements IPrItemService {
       return this.items;
     }
     
-    getItemByKey: (key: string) => PrItem = (key: string) => {
-      for(let i = 0; i < this.items.length; i++) {
-        if(this.items[i].key === key)
-          return this.items[i];
-      }
-      return (
-        {
-          "key": "cecil",
-          "header": "Cecil Folk",
-          "headerMedia": "5:22:40 PM",
-          "content": "The GB pixel is down, navigate the virtual interface!"
-        }
-      ); // TODO: return value when given key not found
-      // return this.items.find(item => item.key === id); // problem with returning either PrItem or undefined if key not found
+    getItemByKey: (key: string) => PrItem | undefined = (key: string) => {
+      // for(let i = 0; i < this.items.length; i++) {
+      //   if(this.items[i].key === key)
+      //     return this.items[i];
+      // }
+      // return (
+      //   {
+      //     "key": "cecil",
+      //     "header": "Cecil Folk",
+      //     "headerMedia": "5:22:40 PM",
+      //     "content": "The GB pixel is down, navigate the virtual interface!"
+      //   }
+      // ); // TODO: return value when given key not found
+      return this.items.find(item => item.key === key); // problem with returning either PrItem or undefined if key not found
     }
 
     addItem: (elem: PrItem) => void = (elem: PrItem) => {
@@ -43,7 +43,9 @@ export class PrItemServiceFromFile implements IPrItemService {
         if(this.items[i].key === key)
           idx = i;
       }
-      this.items.splice(idx, 1);
+      if(idx !== -1) {
+        this.items.splice(idx, 1);
+      }
       // TODO save to file
     }
 
