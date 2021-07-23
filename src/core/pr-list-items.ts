@@ -6,20 +6,7 @@ export class PrItemService implements IPrItemService {
     }
 
     getItemByKey: (key: string) => PrItem | undefined = (key: string) => {
-      // for(let i = 0; i < this.items.length; i++) {
-      //   if(this.items[i].key === key)
-      //     return this.items[i];
-      // }
-      // return (
-      //   {
-      //     "key": "cecil",
-      //     "header": "Cecil Folk",
-      //     "headerMedia": "5:22:40 PM",
-      //     "content": "The GB pixel is down, navigate the virtual interface!"
-      //   }
-      // ); // TODO: return value when given key not found
-      return this.items.find(item => item.key === key); // problem with returning either PrItem or undefined if key not found
-      // TODO: better to handle this on the UI -> try to lift them up. union operator |
+      return this.items.find(item => item.key === key);
     }
     
     addItem: (elem: PrItem) => void = (elem: PrItem) => {
