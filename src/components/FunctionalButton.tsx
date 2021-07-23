@@ -5,9 +5,10 @@ import service from './PrList';
 
 interface Props {
   onClick: () => void;
+  buttonName: string;
 }
 
-export const FunctionalButton: FC<Props> = ({ onClick }) => {
+export const FunctionalButton: FC<Props> = ({ onClick, buttonName }) => {
   // return <button onClick={onClick}>Test Button</button>;
-  return <button onClick={onClick} />;
+  return <button onClick={onClick}>{buttonName}</button>;
 };

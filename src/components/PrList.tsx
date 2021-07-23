@@ -16,9 +16,14 @@ const PrList = () => {
       setItems(items);
     }
     const fetchItemByKey = async (key: string) => {
-      const item = (await service).getItemByKey(key);
+      let item = (await service).getItemByKey(key);
       if (!item) {
-        return; // add additional logic to display it wasn't fpound
+        item = {
+          "key": "item-not-found",
+          "header": "Item not found!",
+          "headerMedia": "",
+          "content": "Could not find item with given key!"
+        };
       }
       let list = Array<PrItem>();
       list.push(item);
@@ -28,7 +33,7 @@ const PrList = () => {
       (await service).removeItem(key);
     }
 
-    //removeItemByKey("robert");
+    //removeItemByKey("robert"); // SOLUTION: extract to different functional component! first understand context!
     // fetchItems();
     fetchItemByKey("robert");
   }, [service, setItems, setFoundItemList]);
