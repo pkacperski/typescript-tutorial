@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PrList from './PrList';
+import PrList from './pr-list';
 import {Provider, teamsTheme} from '@fluentui/react-northstar';
 
 const App = () => {

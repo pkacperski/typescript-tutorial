@@ -41,7 +41,7 @@ const PrList = () => {
   // const FunctionalButton = (buttonsFunction: string, key = "robert") => {
   //   // const onClickHandle = (await service).removeItem;
   //   let buttonCallback, buttonName;
-  //   if(buttonsFunction === "remove") {
+  //   if(buttonsFunction === "remove") { // BLAD (rules of hooks violation) - w druga strone: najpierw useCallback, a w nim if-y
   //     buttonCallback = useCallback(async (key = "robert") => {
   //         (await service).removeItem(key);
   //     }, [service]);
