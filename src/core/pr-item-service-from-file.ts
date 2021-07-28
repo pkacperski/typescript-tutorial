@@ -6,7 +6,7 @@ export class PrItemServiceFromFile implements IPrItemService {
     ) {};
     
     static async init(): Promise<IPrItemService> {
-      const data = (await import(`./../data/pr-items.json`)).default;
+      const data = (await import(`../data/pr-items.json`)).default;
       const prs: Array<PrItem> = Object.values(data);
   
       return new PrItemServiceFromFile(prs);
