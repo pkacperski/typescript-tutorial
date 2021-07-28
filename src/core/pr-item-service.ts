@@ -1,7 +1,14 @@
 import { PrItem, IPrItemService } from './pr-item-interface';
 
 export class PrItemService implements IPrItemService {
-    getItems: () => Array<PrItem> = () => {
+    subscribe(subscriber: () => void) { // TODO
+      console.log("subscribe");
+      return () => {
+        console.log("unsubscribe")
+      };
+    }  
+  
+  getItems: () => Array<PrItem> = () => {
       return this.items;
     }
 

@@ -1,14 +1,12 @@
 import PrList from './pr-list';
 import { Provider, teamsTheme } from '@fluentui/react-northstar';
-import { GetAllButton } from './get-all-button';
-import { DeleteLastButton } from './delete-last-button';
+import { ButtonsContainer } from './buttons-container';
 
 const App = () => {
   return (
     <Provider theme={teamsTheme}>
       <PrList />
-        <GetAllButton />
-        <DeleteLastButton />
+      <ButtonsContainer />
     </Provider>
   );
 }

@@ -15,8 +15,10 @@ const PrList = () => {
         setPrItems(items);
       }
     }
-
     getItemsAsync();
+    const unsubscribe = prItemService.subscribe(getItemsAsync); // TODO
+
+    return unsubscribe;
   }, [setPrItems, prItemService]);
 
   return (

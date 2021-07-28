@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useAppContext } from '../core/app-context';
-import { FunctionalButton } from './functional-button';
+import { Button } from './functional-button';
 
 export const DeleteLastButton: FC = () => {
   const {prItemService} = useAppContext();
-  return <FunctionalButton onClick={prItemService.removeLastItem} buttonName="Delete last"></FunctionalButton>;
+  return <Button onClick={prItemService.removeLastItem.bind(prItemService)}>Delete last</Button>;
 };

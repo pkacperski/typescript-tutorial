@@ -5,7 +5,10 @@ export type PrItem = {
     content: string
 }
 
+type unsubscribeFunction = () => void; // void != {} !
+
 export interface IPrItemService {
+    subscribe: (subscriber: () => void) => unsubscribeFunction; // TODO
     getItems: () => Array<PrItem>; // Read (R)
     getItemByKey: (key: string) => PrItem | undefined;
     addItem: (elem: PrItem) => void; // Add (C)

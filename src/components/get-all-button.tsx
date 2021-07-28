@@ -1,8 +1,16 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { useAppContext } from '../core/app-context';
-import { FunctionalButton } from './functional-button';
+import { Button } from './functional-button';
 
 export const GetAllButton: FC = () => {
   const {prItemService} = useAppContext();
-  return <FunctionalButton onClick={prItemService.getItems} buttonName="Get All"></FunctionalButton>;
+
+  const myFunction = useCallback(
+    () => {
+      prItemService.getItems();
+    },
+    [prItemService],
+  );
+
+  return <Button onClick={myFunction}>Get All</Button>;
 };

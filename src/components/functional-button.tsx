@@ -2,9 +2,9 @@ import { FC } from 'react';
 
 interface Props {
   onClick: () => void;
-  buttonName: string;
 }
 
-export const FunctionalButton: FC<Props> = ({ onClick, buttonName }) => {
-  return <button onClick={onClick}>{buttonName}</button>;
+// context-based naming!!
+export const Button: FC<Props> = ({ onClick, children }) => {
+  return <button onClick={onClick}>{children}</button>;
 };

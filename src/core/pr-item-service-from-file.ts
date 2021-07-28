@@ -12,6 +12,13 @@ export class PrItemServiceFromFile implements IPrItemService {
       return new PrItemServiceFromFile(prs);
     }
 
+    subscribe(subscriber: () => void) {
+      console.log("subscribe"); // TODO: subscriber pattern
+      return () => {
+        console.log("unsubscribe")
+      };
+    }
+
     getItems(): Array<PrItem> {
       return this.items;
     }
