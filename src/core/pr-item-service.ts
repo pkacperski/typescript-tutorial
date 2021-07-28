@@ -13,6 +13,10 @@ export class PrItemService implements IPrItemService {
       this.items.push(elem);
     }
 
+    removeLastItem: () => void = () => {
+      this.items.splice(this.items.length-1, 1);
+    }
+
     removeItem: (key: string) => void = (key: string) => {
       let idx = -1;
       for(let i = 0; i < this.items.length; i++) {

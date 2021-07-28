@@ -22,7 +22,12 @@ export class PrItemServiceFromFile implements IPrItemService {
 
     addItem: (elem: PrItem) => void = (elem: PrItem) => {
       this.items.push(elem);
-      // TODO save to file
+      // maybe save to file
+    }
+
+    removeLastItem: () => void = () => {
+      this.items.splice(this.items.length-1, 1);
+      // maybe save to file
     }
 
     removeItem: (key: string) => void = (key: string) => {
@@ -34,7 +39,7 @@ export class PrItemServiceFromFile implements IPrItemService {
       if(idx !== -1) {
         this.items.splice(idx, 1);
       }
-      // TODO save to file
+      // maybe save to file
     }
 
     // TODO(1,5): implement CRUD operations -> getItemByKey(DONE), ?remove?

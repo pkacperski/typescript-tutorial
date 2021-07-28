@@ -26,6 +26,7 @@ const PrList = () => {
         selectedIndex={selectedIndex}
         onSelectedIndexChange={(e, newProps) => {}}
         items={prItems}
+        // items={Array<PrItem>()}
       />
     </>
   );

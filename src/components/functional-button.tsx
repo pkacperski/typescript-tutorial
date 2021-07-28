@@ -6,6 +6,5 @@ interface Props {
 }
 
 export const FunctionalButton: FC<Props> = ({ onClick, buttonName }) => {
-  // return <button onClick={onClick}>Test Button</button>;
   return <button onClick={onClick}>{buttonName}</button>;
 };
