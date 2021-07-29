@@ -13,12 +13,13 @@ const PrList = () => {
       const items = await prItemService.getItems();
       if(items) {
         setPrItems(items);
+        console.log("setPrItems");
+        console.log("length: " + items.length);
       }
     }
     getItemsAsync();
-    const unsubscribe = prItemService.subscribe(getItemsAsync); // TODO
-
-    return unsubscribe;
+    
+    return prItemService.subscribe(getItemsAsync); // TODO
   }, [setPrItems, prItemService]);
 
   return (

@@ -1,5 +1,5 @@
 import { Button } from "@fluentui/react-northstar";
-import React, { createContext, FC, useContext, useEffect, useState } from "react";
+import { createContext, FC, useContext, useEffect, useState } from "react";
 import { IAppServices, buildServices } from '../services/service-builder'
 
 type IAppContext = {} & IAppServices;

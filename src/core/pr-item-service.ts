@@ -1,7 +1,7 @@
 import { PrItem, IPrItemService } from './pr-item-interface';
 
 export class PrItemService implements IPrItemService {
-    subscribe(subscriber: () => void) { // TODO
+    subscribe(subscriber: () => void) { // TODO - pub/sub
       console.log("subscribe");
       return () => {
         console.log("unsubscribe")

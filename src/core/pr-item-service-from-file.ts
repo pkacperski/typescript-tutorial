@@ -2,20 +2,24 @@ import { IPrItemService, PrItem } from "./pr-item-interface";
 
 export class PrItemServiceFromFile implements IPrItemService {
     public constructor(
-      private items: Array<PrItem>
+      private items: Array<PrItem>,
+      private subscribers: Array<() => void>
     ) {};
     
     static async init(): Promise<IPrItemService> {
       const data = (await import(`../data/pr-items.json`)).default;
-      const prs: Array<PrItem> = Object.values(data);
+      const items = Object.values(data);
+      const subscribers = Array<() => void>();
   
-      return new PrItemServiceFromFile(prs);
+      return new PrItemServiceFromFile(items, subscribers);
     }
 
     subscribe(subscriber: () => void) {
-      console.log("subscribe"); // TODO: subscriber pattern
+      this.subscribers.push(subscriber);
+      console.log("subscribe!");
       return () => {
-        console.log("unsubscribe")
+        this.subscribers.pop(); // TODO - remove the correct subscriber from the array (find the correct subscriber and remove it)
+        console.log("unsubscribe!")
       };
     }
 
@@ -30,11 +34,13 @@ export class PrItemServiceFromFile implements IPrItemService {
     addItem: (elem: PrItem) => void = (elem: PrItem) => {
       this.items.push(elem);
       // maybe save to file
+      this.notifyAllSubscribers();
     }
 
     removeLastItem: () => void = () => {
       this.items.splice(this.items.length-1, 1);
       // maybe save to file
+      this.notifyAllSubscribers();
     }
 
     removeItem: (key: string) => void = (key: string) => {
@@ -47,5 +53,11 @@ export class PrItemServiceFromFile implements IPrItemService {
         this.items.splice(idx, 1);
       }
       // maybe save to file
+      this.notifyAllSubscribers();
+    }
+
+    notifyAllSubscribers() {
+      this.subscribers.forEach(func => func());
+      console.log("subscriber notified!");
     }
 }
