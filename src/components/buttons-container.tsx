@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react';
 import { useAppContext } from '../core/app-context';
-import { Button } from './functional-button';
+import { Button } from './button';
 
 export const ButtonsContainer: FC = () => {
     const {prItemService} = useAppContext();

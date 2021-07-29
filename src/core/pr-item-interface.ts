@@ -9,12 +9,10 @@ type unsubscribeFunction = () => void; // void != {} !
 
 export interface IPrItemService {
     subscribe: (subscriber: () => void) => unsubscribeFunction; // TODO
-    getItems: () => Array<PrItem>; // Read (R)
+    getItems: () => Array<PrItem>;
     getItemByKey: (key: string) => PrItem | undefined;
-    addItem: (elem: PrItem) => void; // Add (C)
-    removeItem: (key: string) => void; // Delete (D) // TODO: extract to different interface, and this interface extends the other interface (common implemenation of other interface)
+    addItem: (elem: PrItem) => void;
+    removeItem: (key: string) => void;
     removeLastItem: () => void;
-    // TODO: update
-    // TODO: cos z obsluga przycisku typu wcisniecie przycisku powoduje usuniecie itemu i rerender listy?
 }
 

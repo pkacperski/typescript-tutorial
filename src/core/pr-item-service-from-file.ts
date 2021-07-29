@@ -48,7 +48,4 @@ export class PrItemServiceFromFile implements IPrItemService {
       }
       // maybe save to file
     }
-
-    // TODO(1,5): implement CRUD operations -> getItemByKey(DONE), ?remove?
-    // TODO(2): buttons for add and delete functionality, also for update, add UI for this -> 
 }

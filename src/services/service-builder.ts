@@ -22,12 +22,3 @@ export async function buildServices(): Promise<IAppServices> { // from file
         prItemService
     };
 }
-
-// z builder.ts:
-// export const createService: () => IPrItemService = () => {
-//     return new PrItemService();
-// }
-
-// export const createService: () => Promise<IPrItemService> = async () => {
-//     return await PrItemServiceFromFile.init();
-// }
