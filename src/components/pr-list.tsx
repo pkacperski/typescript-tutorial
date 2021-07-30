@@ -7,26 +7,17 @@ const PrList = () => {
   const [selectedIndex] = useState(1);
   const [prItems, setPrItems] = useState<Array<PrItem>>();
   const { prItemService } = useAppContext();
-  let [ , setState] = useState({});
 
   useEffect(() => {
     const getPrItems = () => {
       let items = prItemService.getItems();
 
-      if(items) {
-        setPrItems(items); // TODO: error
-      }
-
-      // force rerender - works
-      setState({});
-
-      // let prItems = prItemService.getItems();
-      // setPrItems(items => items = prItemService.getItems());
+      setPrItems(items);
     }
     getPrItems();
     
     return prItemService.subscribe(getPrItems);
-  }, [setPrItems, prItemService, prItems]);
+  }, [setPrItems, prItemService]);
 
   return (
     <>

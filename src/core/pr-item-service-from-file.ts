@@ -24,7 +24,7 @@ export class PrItemServiceFromFile implements IPrItemService {
     }
 
     getItems(): Array<PrItem> {
-      return this.items;
+      return [...this.items]; // maybe a need to make a deep copy if there were multiple consumers (not in my case)
     }
     
     getItemByKey: (key: string) => PrItem | undefined = (key: string) => {
