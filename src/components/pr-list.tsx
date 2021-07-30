@@ -10,25 +10,22 @@ const PrList = () => {
   let [ , setState] = useState({});
 
   useEffect(() => {
-    const getItemsAsync = async () => {
-      let items = await prItemService.getItems();
-
-      if (items === prItems) {
-        console.log('it will not render, the very same value is being set');
-      }
+    const getPrItems = () => {
+      let items = prItemService.getItems();
 
       if(items) {
         setPrItems(items); // TODO: error
-        console.log("setPrItems");
-        console.log("length: " + items.length);
       }
 
       // force rerender - works
       setState({});
+
+      // let prItems = prItemService.getItems();
+      // setPrItems(items => items = prItemService.getItems());
     }
-    getItemsAsync();
+    getPrItems();
     
-    return prItemService.subscribe(getItemsAsync);
+    return prItemService.subscribe(getPrItems);
   }, [setPrItems, prItemService, prItems]);
 
   return (
